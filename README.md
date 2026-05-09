@@ -68,15 +68,32 @@ nawy-playwright-assignment/
 
 ## Setup
 
-Requires Node ≥ 18 (tested on 22).
+Requires Node ≥ 18 (tested on 22). Runs natively on Windows, macOS, and Linux.
 
-```bash
+### Windows (PowerShell)
+
+```powershell
+cd path\to\nawy-playwright-assignment
 npm install
 npx playwright install chromium firefox
 ```
 
-`npm install` alone fetches the `@playwright/test` package; the second
-command pulls the actual browser binaries (~200 MB).
+### macOS / Linux (bash, zsh)
+
+```bash
+cd path/to/nawy-playwright-assignment
+npm install
+npx playwright install chromium firefox
+```
+
+`npm install` fetches the `@playwright/test` package; the second command
+downloads the browser binaries (~200 MB).
+
+> **Tip — running under WSL?** Make sure WSL has at least 8 GB of free
+> RAM before running the suite in parallel. Both browsers each allocate
+> ~600 MB; if WSL starts swapping, you'll see intermittent UI flakes
+> that look like browser bugs but are actually paging stalls. Running
+> on Windows-native (PowerShell) avoids this entirely.
 
 ---
 
