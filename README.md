@@ -101,10 +101,10 @@ downloads the browser binaries (~200 MB).
 
 | Command | What it does |
 |---|---|
-| `npm test` | Runs the suite on **both** Chromium and Firefox in parallel |
-| `npm run test:chromium` | Chromium only |
-| `npm run test:firefox` | Firefox only |
-| `npm run test:headed` | Opens a real browser window |
+| `npm test` | Runs the suite on **both** Chromium and Firefox in parallel — **headed by default** so you can watch it run |
+| `npm run test:chromium` | Chromium only (headed) |
+| `npm run test:firefox` | Firefox only (headed) |
+| `npm run test:headless` | Same suite, headless (suitable for CI / display-less servers) |
 | `npm run test:debug` | Launches the Playwright Inspector (`PWDEBUG=1`) |
 | `npm run report` | Opens the last HTML report |
 | `npx playwright test --workers=1` | Sequential (useful for debugging) |
@@ -134,7 +134,8 @@ custom device by appending another entry to the array.
 | `UI_BASE_URL` | `https://practicesoftwaretesting.com` | Override the SUT base URL |
 | `API_BASE_URL` | `https://api.practicesoftwaretesting.com` | Override the API base URL |
 | `TEST_USER_PASSWORD` | built-in fallback meeting the SUT's policy | Password for ephemeral test users registered during a run |
-| `CI` | unset | Enables `forbidOnly`, retries=2, workers=2 |
+| `HEADLESS` | unset | Set to `1` to force headless mode (e.g. for CI / display-less servers) |
+| `CI` | unset | Enables `forbidOnly`, retries=2, workers=2, **and forces headless** automatically |
 
 `.env.example` ships with sensible defaults.
 

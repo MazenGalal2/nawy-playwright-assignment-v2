@@ -2,7 +2,9 @@ import { defineConfig, devices } from "@playwright/test";
 
 export default defineConfig({
   testDir: "./tests",
-  timeout: 60_000,
+  // 90 s gives headed cold-start (Windows + AV scan + browser launch) room
+  // to settle without forfeiting a real-test slowness signal.
+  timeout: 90_000,
   expect: { timeout: 10_000 },
 
   fullyParallel: true,
@@ -18,11 +20,15 @@ export default defineConfig({
   use: {
     baseURL: process.env.UI_BASE_URL ?? "https://practicesoftwaretesting.com",
     testIdAttribute: "data-test",
+    // Headed by default so a reviewer running `npm test` sees the browsers
+    // drive the flow. Override with `HEADLESS=1 npm test` in CI environments
+    // that lack a display server.
+    headless: process.env.HEADLESS === "1" || process.env.CI === "true",
     trace: "retain-on-failure",
     screenshot: "only-on-failure",
     video: "retain-on-failure",
-    actionTimeout: 10_000,
-    navigationTimeout: 30_000,
+    actionTimeout: 15_000,
+    navigationTimeout: 45_000,
     extraHTTPHeaders: {
       Accept: "application/json",
     },

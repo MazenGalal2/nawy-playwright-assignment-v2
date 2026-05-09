@@ -23,6 +23,7 @@ export class ApiClient {
   static async create(token?: string): Promise<ApiClient> {
     const ctx = await request.newContext({
       baseURL: API_BASE_URL,
+      timeout: 30_000,
       extraHTTPHeaders: {
         Accept: "application/json",
         ...(token ? { Authorization: `Bearer ${token}` } : {}),

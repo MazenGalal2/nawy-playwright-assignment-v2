@@ -7,6 +7,9 @@ playwright/.cache/
 .env
 .env.local
 
+# Local helper scripts (one-off runners, not part of the framework)
+_*.bat
+
 .DS_Store
 Thumbs.db
 .idea/
