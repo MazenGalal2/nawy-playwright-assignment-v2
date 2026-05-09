@@ -1,0 +1,26 @@
+{
+  "name": "nawy-playwright-assignment",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Playwright + TypeScript framework for the Nawy Software Testing Hiring Assignment — integrated UI + API E2E flow against practicesoftwaretesting.com.",
+  "scripts": {
+    "test": "playwright test",
+    "test:chromium": "playwright test --project=chromium",
+    "test:firefox": "playwright test --project=firefox",
+    "test:headed": "playwright test --headed",
+    "test:debug": "PWDEBUG=1 playwright test",
+    "report": "playwright show-report",
+    "trace": "playwright show-trace"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.48.0",
+    "@types/node": "^22.7.5",
+    "typescript": "^5.6.3"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^9.0.3"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
